@@ -354,6 +354,15 @@ let replaceKeysInObj = function(obj, oldKey, newKey) {
 // fibonacci(5); // [0,1,1,2,3,5]
 // Note: The 0 is not counted.
 let fibonacci = function(n) {
+  if (n <= 0) {
+    return null;
+  }
+  if (n === 1) {
+    return [0, 1];
+  }
+  var prev = fibonacci(n - 1);
+  var sum = prev[prev.length - 1] + prev[prev.length - 2];
+  return prev.concat([sum]);
 };
 
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
