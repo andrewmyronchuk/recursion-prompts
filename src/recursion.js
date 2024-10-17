@@ -218,6 +218,19 @@ let divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 let gcd = function(x, y) {
+  if (x < 0 || y < 0) {
+    return null;
+  }
+
+  var max = Math.max(x, y);
+  var min = Math.min(x, y);
+  var remainder = max % min;
+
+  if (remainder === 0) {
+    return min;
+  }
+
+  return gcd(min, remainder);
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
