@@ -504,6 +504,31 @@ let alternateSign = function(array) {
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 let numToText = function(str) {
+  if (str.length === 0) {
+    return '';
+  }
+
+  var charToNum = parseInt(str[0]);
+
+  if (!charToNum) {
+    return str[0] + numToText(str.slice(1));
+  }
+
+  var numsMap = new Map();
+  numsMap.set(0, 'zero');
+  numsMap.set(1, 'one');
+  numsMap.set(2, 'two');
+  numsMap.set(3, 'three');
+  numsMap.set(4, 'four');
+  numsMap.set(5, 'five');
+  numsMap.set(6, 'six');
+  numsMap.set(7, 'seven');
+  numsMap.set(8, 'eight');
+  numsMap.set(9, 'nine');
+
+  if (typeof charToNum === 'number') {
+    return numsMap.get(charToNum) + numToText(str.slice(1));
+  }
 };
 
 
