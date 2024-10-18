@@ -622,27 +622,46 @@ let tagCount = function(tag, node) {
 // let array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
-let binarySearch = function(array, target, min, max) {
-  if (min === undefined) {
-    min = 0;
-  }
-  if (max === undefined) {
-    max = array.length - 1;
-  }
-  if (min > max) {
+// let binarySearch = function(array, target, min, max) {
+//   if (min === undefined) {
+//     min = 0;
+//   }
+//   if (max === undefined) {
+//     max = array.length - 1;
+//   }
+//   if (min > max) {
+//     return null;
+//   }
+
+//   var middle = Math.floor((min + max) / 2);
+
+//   if (array[middle] === target) {
+//     return middle;
+//   }
+//   if (array[middle] < target) {
+//     return binarySearch(array, target, middle + 1, max);
+//   }
+//   if (array[middle] > target) {
+//     return binarySearch(array, target, min, middle - 1);
+//   }
+// };
+
+// Binary Search with 2 arguments
+let binarySearch = function(array, target) {
+  if (array.length === 0) {
     return null;
   }
 
-  var middle = Math.floor((min + max) / 2);
+  var middle = Math.floor(array.length - 1 / 2);
 
   if (array[middle] === target) {
     return middle;
   }
   if (array[middle] < target) {
-    return binarySearch(array, target, middle + 1, max);
+    return binarySearch(array.slice(middle + 1), target);
   }
   if (array[middle] > target) {
-    return binarySearch(array, target, min, middle - 1);
+    return binarySearch(array.slice(0, middle), target);
   }
 };
 
