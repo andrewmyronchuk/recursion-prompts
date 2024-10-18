@@ -559,7 +559,6 @@ let alternateSign = function(array) {
   if (secondToAdd === undefined) {
     return [firstToAdd].concat(alternateSign(array.slice(2)));
   }
-
   if (secondToAdd > 0) {
     secondToAdd = -secondToAdd;
   }
@@ -624,6 +623,27 @@ let tagCount = function(tag, node) {
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
 let binarySearch = function(array, target, min, max) {
+  if (min === undefined) {
+    min = 0;
+  }
+  if (max === undefined) {
+    max = array.length - 1;
+  }
+  if (min > max) {
+    return null;
+  }
+
+  var middle = Math.floor((min + max) / 2);
+
+  if (array[middle] === target) {
+    return middle;
+  }
+  if (array[middle] < target) {
+    return binarySearch(array, target, middle + 1, max);
+  }
+  if (array[middle] > target) {
+    return binarySearch(array, target, min, middle - 1);
+  }
 };
 
 // 39. Write a merge sort function.
