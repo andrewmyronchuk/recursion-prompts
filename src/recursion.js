@@ -210,7 +210,35 @@ let multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 let divide = function(x, y) {
+  if (y === 0) {
+    return NaN;
+  }
 
+  var oneIsNegative = false;
+  if (x < 0 || y < 0) {
+    oneIsNegative = false;
+  }
+  if (x < 0 && y < 0) {
+    oneIsNegative = false;
+  }
+
+  if (x < 0) {
+    x = -x;
+  }
+  if (y < 0) {
+    y = -y;
+  }
+
+  var quotient = 0;
+  if (x - y < 0) {
+    return quotient;
+  }
+
+  quotient = quotient + 1 + divide(x - y, y);
+  if (oneIsNegative) {
+    return -quotient;
+  }
+  return quotient;
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
