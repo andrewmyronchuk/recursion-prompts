@@ -210,6 +210,7 @@ let multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 let divide = function(x, y) {
+
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
@@ -556,6 +557,20 @@ let numToText = function(str) {
 
 // 37. Return the number of times a tag occurs in the DOM.
 let tagCount = function(tag, node) {
+  var count = 0;
+  if (!node) {
+    node = document;
+  }
+
+  for (var key in node.childNodes) {
+    if (node.childNodes[key].nodeType === 1) {
+      if (node.childNodes[key].nodeName === tag.toUpperCase()) {
+        count += 1;
+      }
+      count += tagCount(tag, node.childNodes[key]);
+    }
+  }
+  return count;
 };
 
 // 38. Write a function for binary search.
